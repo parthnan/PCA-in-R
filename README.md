@@ -9,3 +9,6 @@ The calculations done in this script are :
 2. Take only the largest 30 constants in D and remove the other elements, so that D is now 30 by 30,  by the line "D20 = D[1:30,1:30]".
 
 3. Reformulate an approximation of  A by UDV^⊤=A and print.
+
+![alt text](https://raw.githubusercontent.com/parthnan/PCA-in-R/master/PCAexample.png)
+
