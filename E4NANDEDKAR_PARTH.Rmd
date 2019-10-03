@@ -1,0 +1,34 @@
+---
+title: "PCA in R"
+author: "NANDEDKAR PARTH"
+output:
+  html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r,eval=TRUE}
+library("EBImage")
+#画像の読み込み
+image.col <- readImage("obama.png")
+#グレイスケールに
+image.gs <- apply(imageData(image.col), c(1,2), mean)
+#圧縮
+#線形写像の表現行列の生成
+A <- matrix(image.gs,256,256)#上記のAを記入せよ
+
+#特異値分解の行列を格納せよ
+res.svd=svd(A,nu=30,nv=30)
+U <- res.svd$u
+V <- res.svd$v
+D <- diag(res.svd$d)
+D20 = D[1:30,1:30]
+
+#可視化#===========================================
+low.image <- U%*%D20%*%t(V) #底ランク行列を格納せよ．
+#可視化
+display(image.gs)
+display(low.image)
+```
